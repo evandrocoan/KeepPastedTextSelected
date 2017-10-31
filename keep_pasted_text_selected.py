@@ -6,13 +6,11 @@ import sublime_plugin
 
 class SampleListener(sublime_plugin.EventListener):
 
-    def __init__(self):
-        self.start_selection = []
-
     def on_text_command(self, view, command, args):
         # print ("About to execute " + command)
 
         if command == "paste_and_indent":
+            self.start_selection = []
 
             for selection in view.sel():
                 self.start_selection.append( selection.begin() )
